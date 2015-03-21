@@ -40,3 +40,11 @@ function delete_user_event($event, $type, $user) {
 	
 	return true;
 }
+
+
+function upgrades() {
+	if (elgg_is_admin_logged_in()) {
+		elgg_load_library(PLUGIN_ID . ':upgrades');
+		run_function_once(__NAMESPACE__ . '\\upgrade_20150321');
+	}
+}

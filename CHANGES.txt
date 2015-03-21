@@ -1,0 +1,11 @@
+## Version History
+
+2.0 (03/21/2015):
+
+ - upgraded compatibility to 1.9+
+ - general code cleanup
+ - show amount of content owned by the user prior to deletion
+ - nicer deletion view
+ - migrate river entries
+
+Funding for this version provided by Pascal Orth

@@ -1,10 +1,10 @@
 <?php
 
-$english = array(
-	/* magic strings */
+return array(
 	'admin:user' => "User",
 	'admin:user:delete:content_policy' => "Content Deletion Policy",
-	
+	'duc:deleted:user:title' => "User to be deleted",
+	'duc:label:statistics' => "Content owned by %s",
 	
 	'duc:error:content_owner' => "Invalid ID for new content owner",
 	'duc:error:invalid_guid' => "Invalid user ID",
@@ -18,5 +18,3 @@ $english = array(
 	'duc:label:reassign_member:help' => 'If reassigning content, type the name of the member you want to be the new owner and select them from the list.  You can only select one owner, any additional selections will be ignored.',
 	'duc:error:reassign_deleted_user' => "You cannot reassign content to the user you are deleting",
 );
-
-add_translation('en', $english);

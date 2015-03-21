@@ -2,6 +2,9 @@
 
 namespace deleted_user_content;
 
+const PLUGIN_ID = 'deleted_user_content';
+const PLUGIN_VERSION = 20150321;
+
 require_once 'lib/hooks.php';
 require_once 'lib/events.php';
 
@@ -9,8 +12,14 @@ elgg_register_event_handler('init', 'system', __NAMESPACE__ . '\\init');
 
 
 function init() {
+	elgg_register_library(PLUGIN_ID .':upgrades', __DIR__ . '/lib/upgrades.php');
+	
+	// register plugin hooks
 	elgg_register_plugin_hook_handler('action', 'admin/user/delete', __NAMESPACE__ . '\\delete_user_action');
+	
+	// register events
 	elgg_register_event_handler('delete', 'user', __NAMESPACE__ . '\\delete_user_event', 1000);
+	elgg_register_event_handler('upgrade', 'system', __NAMESPACE__ . '\\upgrades');
 }
 
 
@@ -41,10 +50,26 @@ function reassign_content($user1, $user2) {
 	$q = "UPDATE {$dbprefix}metadata SET owner_guid = {$user2->guid} WHERE owner_guid = {$user1->guid}";
 	update_data($q);
 	
+	$q = "UPDATE {$dbprefix}river SET subject_guid = {$user2->guid} WHERE subject_guid = {$user1->guid}";
+	update_data($q);
+	
+	$q = "UPDATE {$dbprefix}river SET object_guid = {$user2->guid} WHERE object_guid = {$user1->guid}";
+	update_data($q);
+	
+	$q = "UPDATE {$dbprefix}river SET target_guid = {$user2->guid} WHERE target_guid = {$user1->guid}";
+	update_data($q);
+	
 	return true;
 }
 
 
+/**
+ * recursively copy files from one directory to another
+ * 
+ * @param type $src
+ * @param type $dst
+ * @return void
+ */
 function recurse_copy($src,$dst) { 
     $dir = opendir($src);
 	
