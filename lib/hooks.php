@@ -52,10 +52,10 @@ function delete_user_action($hook, $type, $return, $params) {
 			// ideally this would be in the 'delete', 'user' event
 			// but files are already deleted by then
 			// see https://github.com/Elgg/Elgg/issues/6953
-			$dir1 = new \Elgg\EntityDirLocator($user->guid);
+			$dir1 = new \Elgg_EntityDirLocator($user->guid);
 			$dirname1 = elgg_get_config('dataroot') . $dir1;
 	
-			$dir2 = new \Elgg\EntityDirLocator($reassign_user->guid);
+			$dir2 = new \Elgg_EntityDirLocator($reassign_user->guid);
 			$dirname2 = elgg_get_config('dataroot') . $dir2;
 	
 			recurse_copy($dirname1, $dirname2);
