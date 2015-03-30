@@ -40,6 +40,15 @@ function reassign_content($user1, $user2) {
 	
 	$q = "UPDATE {$dbprefix}metadata SET owner_guid = {$user2->guid} WHERE owner_guid = {$user1->guid}";
 	update_data($q);
+
+	$q = "UPDATE {$dbprefix}river SET subject_guid = {$user2->guid} WHERE subject_guid = {$user1->guid}";
+	update_data($q);
+	
+	$q = "UPDATE {$dbprefix}river SET object_guid = {$user2->guid} WHERE object_guid = {$user1->guid}";
+	update_data($q);
+	
+	$q = "UPDATE {$dbprefix}river SET target_guid = {$user2->guid} WHERE target_guid = {$user1->guid}";
+	update_data($q);
 	
 	return true;
 }
