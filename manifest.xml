@@ -3,7 +3,7 @@
 	<name>Deleted User Content</name>
         <id>deleted_user_content</id>
 	<author>Matt Beckett</author>
-	<version>3.0</version>
+	<version>3.0.1</version>
 	<category>content</category>
 	<blurb>Prevent accidental deletion of content when deleting a user</blurb>
 	<description>Provides a second step to deleting a user, confirming the deletion of content or reassigning to another user</description>
