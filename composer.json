@@ -4,14 +4,14 @@
 	"description": "Handle content of to-be-deleted users",
 	"homepage": "http://arckinteractive.com",
 	"keywords": [
-		"elgg", "plugin",
+		"elgg", "plugin"
 	],
 	"license": "GPL-2.0-only",
 	"authors": [
 		{
 			"name": "Matt Beckett",
 			"email": "matt@arckinteractive.com"
-		},
+		}
 	],
 	"autoload": {
 		"psr-0": {
